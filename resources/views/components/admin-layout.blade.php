@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>JANOTO</title>
+    <title>JANOLO</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -68,7 +68,7 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                             <img src="{{ asset('images/dental.png') }}" alt="Violation Photo" class="w-16 h-16">
                         </div>
                         <div class="text-center mt-2">
-                            <label for="" class="font-black text-white " id="logotext">JANOTO</label>
+                            <label for="" class="font-black text-white " id="logotext">JANOLO</label>
                         </div>
                     </div>
                 </a>
@@ -81,7 +81,7 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                     </a>
                 </li>
                 <li>
-                    <a href=""
+                    <a href="{{ route('admin.add-service') }}"
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-add-box-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Add Services</span>

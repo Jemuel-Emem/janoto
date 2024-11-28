@@ -32,6 +32,10 @@ Route::middleware([
             return view('admin.index');
         })->name('Admindashboard');
 
+        Route::get('/admin.add-service', function(){
+            return view('admin.add-service');
+        })->name('admin.add-service');
+
 
      });
 
@@ -39,6 +43,10 @@ Route::middleware([
         Route::get('/dashboard', function(){
                return view('user.index');
            })->name('user-dashboard');
+
+           Route::get('/user.services', function(){
+            return view('user.services');
+        })->name('user.services');
 
 
 

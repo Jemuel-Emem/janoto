@@ -52,14 +52,14 @@
             color: #009688;
         }
 
-        .main {
+        /* .main {
             background-color: #50646c;
             border: 1px solid #009688;
             color: #f8f8f8;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+        } */
 
         .nav-item {
             padding: 0.5rem 1rem;
@@ -105,7 +105,7 @@
                 display: block;
         }
 
-        /* Mobile responsiveness */
+
         @media (max-width: 768px) {
             .header {
                 padding: 1rem;
@@ -189,7 +189,8 @@
             </div>
             <!-- Navigation Links -->
             <nav class="nav-links flex-col items-center hidden md:flex md:flex-row">
-                <a href="#" class="nav-item text-grayishyellow">Services</a>
+                <a href="{{ route('user-dashboard') }}" class="nav-item text-grayishyellow">Home</a>
+                <a href="{{ route('user.services') }}" class="nav-item text-grayishyellow">Services</a>
                 <a href="#" class="nav-item text-grayishyellow">Appointment</a>
                 <a href="{{ route('logout') }}" class="nav-item text-grayishyellow">Logout</a>
             </nav>
@@ -212,8 +213,8 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-center mt-8">
-        <div class="main w-full sm:max-w-4xl">
+    <div class="flex justify-center mt-8 p-4">
+        <div class="main w-full sm:max-w-8xl ">
             <main>
                 {{ $slot }}
             </main>
