@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <x-button
+                    <x-button wire:click="submitAppointment"
                         label="Submit Appointment"
                         class="bg-green-600 text-white hover:bg-green-700 rounded-md shadow-md transition duration-300 px-6 py-3"
                     />

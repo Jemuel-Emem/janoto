@@ -88,7 +88,7 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                     </a>
                 </li>
                 <li>
-                    <a href=""
+                    <a href="{{ route('admin.appointment') }}"
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-contract-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Appointments</span>

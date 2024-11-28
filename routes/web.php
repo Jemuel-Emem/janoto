@@ -36,6 +36,10 @@ Route::middleware([
             return view('admin.add-service');
         })->name('admin.add-service');
 
+        Route::get('/admin.appointment', function(){
+            return view('admin.appointment');
+        })->name('admin.appointment');
+
 
      });
 

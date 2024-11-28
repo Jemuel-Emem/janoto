@@ -1,8 +1,8 @@
 <div>
-    <!-- Add Service Button -->
+
     <x-button label="Add Service" dark icon="plus" wire:click="$set('add_service_modal', true)" />
 
-    <!-- Services Table -->
+
     <div class="relative overflow-x-auto mt-4">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">

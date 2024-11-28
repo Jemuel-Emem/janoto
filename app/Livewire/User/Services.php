@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Livewire\User;
-
+use App\Models\appointment;
 use Livewire\Component;
 use App\Models\Service;
 use Livewire\WithPagination;
@@ -9,7 +9,8 @@ use Livewire\WithPagination;
 class Services extends Component
 {
     use WithPagination;
-
+    public $appointmentDate = '';
+    public $appointmentTime = '';
     public $search = '';
     public $selectedService = null;
     public $showModal = false;
@@ -29,6 +30,26 @@ class Services extends Component
         $this->showModal = true;
     }
 
+    public function submitAppointment()
+    {
+
+        $this->validate([
+            'appointmentDate' => 'required|date|after_or_equal:today',
+            'appointmentTime' => 'required|date_format:H:i',
+        ]);
+
+
+        Appointment::create([
+            'user_id' => auth()->id(),
+            'service_id' => $this->selectedService->id,
+            'appointment_date' => $this->appointmentDate,
+            'appointment_time' => $this->appointmentTime,
+            'status' => 'pending',
+        ]);
+
+        session()->flash('success', 'Your appointment has been successfully submitted.');
+        $this->closeModal();
+    }
     public function closeModal()
     {
         $this->showModal = false;
