@@ -40,6 +40,10 @@ Route::middleware([
             return view('admin.appointment');
         })->name('admin.appointment');
 
+        Route::get('/admin.schedule', function(){
+            return view('admin.schedule');
+        })->name('admin.schedule');
+
 
      });
 

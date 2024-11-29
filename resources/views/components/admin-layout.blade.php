@@ -13,6 +13,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
     <style>
         [x-cloak] {
@@ -36,6 +38,9 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
 }
 
     </style>
+
+
+
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @wireUiScripts
@@ -74,7 +79,7 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                 </a>
 
                 <li>
-                    <a href=""
+                    <a href="{{ route('Admindashboard')    }}"
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-dashboard-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
@@ -95,7 +100,7 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                     </a>
                 </li>
                 <li>
-                    <a href=""
+                    <a href="{{ route('admin.schedule') }}"
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-calendar-schedule-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Schedule</span>
