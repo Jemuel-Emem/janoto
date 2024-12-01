@@ -44,6 +44,10 @@ Route::middleware([
             return view('admin.schedule');
         })->name('admin.schedule');
 
+        Route::get('/admin.faq', function(){
+            return view('admin.faq');
+        })->name('admin.faq');
+
 
      });
 
@@ -56,7 +60,13 @@ Route::middleware([
             return view('user.services');
         })->name('user.services');
 
+        Route::get('/user.appointment', function(){
+            return view('user.appointment');
+        })->name('user.appointment');
 
+        Route::get('/user.faqs', function(){
+            return view('user.faqs');
+        })->name('user.faqs');
 
 
     });

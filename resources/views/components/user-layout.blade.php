@@ -191,7 +191,8 @@
             <nav class="nav-links flex-col items-center hidden md:flex md:flex-row">
                 <a href="{{ route('user-dashboard') }}" class="nav-item text-grayishyellow">Home</a>
                 <a href="{{ route('user.services') }}" class="nav-item text-grayishyellow">Services</a>
-                <a href="#" class="nav-item text-grayishyellow">Appointment</a>
+                <a href="{{ route('user.appointment') }}" class="nav-item text-grayishyellow">Appointment</a>
+                <a href="{{ route('user.faqs') }}" class="nav-item text-grayishyellow">FAQS</a>
                 <a href="{{ route('logout') }}" class="nav-item text-grayishyellow">Logout</a>
             </nav>
             <div class="relative mt-4 md:mt-0 md:ml-5" x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false">

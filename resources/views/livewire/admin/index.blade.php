@@ -4,7 +4,7 @@
         <div class="text-3xl font-bold mb-2">
             <i class="ri-add-box-fill"></i>
         </div>
-        <div class="text-4xl font-extrabold mb-2">24</div>
+        <div class="text-4xl font-extrabold mb-2">{{ $serviceCount }}</div>
         <div class="text-lg font-medium">Services</div>
     </div>
 
@@ -13,7 +13,7 @@
         <div class="text-3xl font-bold mb-2">
             <i class="ri-contract-fill"></i>
         </div>
-        <div class="text-4xl font-extrabold mb-2">120</div>
+        <div class="text-4xl font-extrabold mb-2">{{ $appointmentCount }}</div>
         <div class="text-lg font-medium">Appointments</div>
     </div>
 
@@ -22,7 +22,7 @@
         <div class="text-3xl font-bold mb-2">
             <i class="ri-calendar-schedule-fill"></i>
         </div>
-        <div class="text-4xl font-extrabold mb-2">15</div>
+        <div class="text-4xl font-extrabold mb-2">{{ $scheduleCount }}</div>
         <div class="text-lg font-medium">Schedules</div>
     </div>
 </div>

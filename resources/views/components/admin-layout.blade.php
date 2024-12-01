@@ -107,7 +107,7 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                     </a>
                 </li>
                 <li>
-                    <a href=""
+                    <a href="{{ route('admin.faq') }}"
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-information-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">FAQ</span>
