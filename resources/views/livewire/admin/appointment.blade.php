@@ -24,8 +24,11 @@
                         <td class="px-4 py-2">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('F j, Y') }}</td>
                         <td class="px-4 py-2">{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('h:i A') }}</td>
                         <td class="px-4 py-2">
-                            <span class="bg-{{ $appointment->status == 'pending' ? 'orange' : 'green' }}-500 text-white px-2 py-1 rounded-full text-sm">{{ ucfirst($appointment->status) }}</span>
+                            <span class="bg-{{ $appointment->status == 'pending' ? 'orange' : ($appointment->status == 'confirmed' ? 'green' : 'red') }}-500 text-white px-2 py-1 rounded-full text-sm">
+                                {{ ucfirst($appointment->status) }}
+                            </span>
                         </td>
+
                         <td class="px-4 py-2">
                             @if($appointment->status == 'pending')
                                 <x-button

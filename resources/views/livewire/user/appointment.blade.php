@@ -5,12 +5,12 @@
     @else
         <div class="relative overflow-x-auto mt-4 bg-white shadow-lg rounded-lg p-4">
             <table class="w-full text-sm text-left text-gray-600">
-                <thead class="text-xs text-gray-700 uppercase " style="background-color: #0f766e;">
+                <thead class="text-xs text-gray-700 uppercase" style="background-color: #0f766e;">
                     <tr>
                         <th scope="col" class="px-6 py-3 font-medium text-white">#</th>
                         <th scope="col" class="px-6 py-3 font-medium text-white">Date</th>
                         <th scope="col" class="px-6 py-3 font-medium text-white">Status</th>
-
+                        <th scope="col" class="px-6 py-3 font-medium text-white">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="text-black">
@@ -21,10 +21,15 @@
                             <td class="px-6 py-4
                             @if($appointment->status == 'pending')  text-yellow-800 @elseif($appointment->status == 'confirmed')  text-green-800 @endif">
                             {{ ucfirst($appointment->status) }}
-                        </td>
-                            {{-- <td class="px-6 py-4">
-                                <button class="text-blue-500 hover:text-blue-700 transition duration-300">Details</button>
-                            </td> --}}
+                            </td>
+                            <td class="px-6 py-4">
+                         
+                                <button
+                                    @if($appointment->status == 'confirmed') disabled class="text-gray-400 cursor-not-allowed" @else class="text-red-600 hover:text-red-800 transition duration-300" @endif
+                                    wire:click="cancelAppointment({{ $appointment->id }})">
+                                    Cancel
+                                </button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

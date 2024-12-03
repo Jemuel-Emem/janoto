@@ -25,12 +25,12 @@
 
     </div>
 
-    <!-- Discover Services Button -->
+
     <a href="{{ route('user.services') }}" class="px-6 py-3 bg-white text-green-500 font-semibold rounded-md hover:bg-green-600 transition duration-300 transform hover:scale-105 mb-6">
         Discover Our Services
     </a>
 
-    <!-- Features Section -->
+
     <div class="flex flex-wrap justify-center items-center space-x-6 mt-12 px-4">
 
         <div class="text-center max-w-xs mb-6 md:mb-0 md:max-w-sm">
