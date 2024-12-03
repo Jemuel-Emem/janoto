@@ -68,6 +68,10 @@ Route::middleware([
             return view('user.faqs');
         })->name('user.faqs');
 
+        Route::get('/user.profile', function(){
+            return view('user.profile');
+        })->name('user.profile');
+
 
     });
 

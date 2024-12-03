@@ -1,20 +1,36 @@
 <div class="flex flex-col items-center justify-center text-center text-black py-16 px-4">
 
-
-    <img src="{{ asset('images/dental.png') }}" alt="Janolo Clinic Logo" class="w-32 h-32 mb-6 transition-transform duration-500 transform hover:scale-110">
-
-
-    <h1 class="text-4xl font-bold text-black mb-4 animate__animated animate__fadeIn">Welcome to Janolo Clinic</h1>
-    <p class="text-lg text-black mb-8 animate__animated animate__fadeIn animate__delay-1s">
-        Providing exceptional dental care for you and your family.
-    </p>
+    <!-- Clinic Hours and Logo/Welcome Section Combined -->
+    <div class="w-full max-w-4xl mx-auto mb-12 px-4 py-6 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
 
 
-    <a href="{{ ('user.services') }}" class="px-6 py-3 bg-white text-green-500 font-semibold rounded-md hover:bg-green-600 transition duration-300 transform hover:scale-105 mb-6">
+
+        <!-- Logo and Welcome Section -->
+        <div class="text-center flex-1">
+            <img src="{{ asset('images/dental.png') }}" alt="Janolo Clinic Logo" class="w-32 h-32 mb-6 transition-transform duration-500 transform hover:scale-110 mx-auto">
+            <h1 class="text-4xl font-bold text-black mb-4 animate__animated animate__fadeIn">Welcome to Janolo Clinic</h1>
+            <p class="text-lg text-black mb-8 animate__animated animate__fadeIn animate__delay-1s">
+                Providing exceptional dental care for you and your family.
+            </p>
+        </div>
+
+        <div class="text-lg text-black flex-1">
+            <h2 class="text-3xl font-semibold text-green-600 mb-4">Our Hours</h2>
+            <div class="space-y-2">
+                <p><span class="font-bold">Monday to Friday:</span> 8:00 AM - 5:00 PM</p>
+                <p><span class="font-bold">Saturday:</span> 8:00 AM - 12:00 PM</p>
+                <p><span class="font-bold">Sunday:</span> Closed</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Discover Services Button -->
+    <a href="{{ route('user.services') }}" class="px-6 py-3 bg-white text-green-500 font-semibold rounded-md hover:bg-green-600 transition duration-300 transform hover:scale-105 mb-6">
         Discover Our Services
     </a>
 
-
+    <!-- Features Section -->
     <div class="flex flex-wrap justify-center items-center space-x-6 mt-12 px-4">
 
         <div class="text-center max-w-xs mb-6 md:mb-0 md:max-w-sm">

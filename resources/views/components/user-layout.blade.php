@@ -153,6 +153,13 @@
                 background-color: #009688;
                 color: #fff;
             }
+            .footer {
+            background-color: #20333d;
+            color: #acad93;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
 
             .header .dropdown {
                 width: 100%;
@@ -193,7 +200,26 @@
                 <a href="{{ route('user.services') }}" class="nav-item text-grayishyellow">Services</a>
                 <a href="{{ route('user.appointment') }}" class="nav-item text-grayishyellow">Appointment</a>
                 <a href="{{ route('user.faqs') }}" class="nav-item text-grayishyellow">FAQS</a>
-                <a href="{{ route('logout') }}" class="nav-item text-grayishyellow">Logout</a>
+                <div class="relative">
+
+                    <button
+                        class="text-grayishyellow bg-darkgreen px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkgreen"
+                        onclick="toggleDropdown()">
+                        Options
+                    </button>
+                    <div
+                        id="dropdownMenu"
+                        class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 hidden z-10">
+                        <a href="{{ route('logout') }}"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                            Logout
+                        </a>
+                        <a href="{{ route('user.profile') }}"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                            Profile
+                        </a>
+                    </div>
+                </div>
             </nav>
             <div class="relative mt-4 md:mt-0 md:ml-5" x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false">
                 {{-- <button @click="dropdownOpen = !dropdownOpen" class="flex items-center text-sm font-medium text-grayishyellow hover:text-white">
@@ -219,14 +245,36 @@
             <main>
                 {{ $slot }}
             </main>
+
+
         </div>
+
+
     </div>
+
+
     <script>
         document.querySelector('.hamburger').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('open');
         });
+
+        function toggleDropdown() {
+        const dropdown = document.getElementById('dropdownMenu');
+        dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (e) {
+        const dropdown = document.getElementById('dropdownMenu');
+        const button = e.target.closest('button');
+        if (!button && dropdown && !dropdown.classList.contains('hidden')) {
+            dropdown.classList.add('hidden');
+        }
+    });
     </script>
+
+
 </body>
 
 </html>
