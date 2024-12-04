@@ -200,6 +200,7 @@
                 <a href="{{ route('user.services') }}" class="nav-item text-grayishyellow">Services</a>
                 <a href="{{ route('user.appointment') }}" class="nav-item text-grayishyellow">Appointment</a>
                 <a href="{{ route('user.faqs') }}" class="nav-item text-grayishyellow">FAQS</a>
+                <a href="{{ route('user.terms') }}" class="nav-item text-grayishyellow">Terms&Condition</a>
                 <div class="relative">
 
                     <button

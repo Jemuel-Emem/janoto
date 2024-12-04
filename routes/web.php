@@ -72,6 +72,10 @@ Route::middleware([
             return view('user.profile');
         })->name('user.profile');
 
+        Route::get('/user.terms', function(){
+            return view('user.terms');
+        })->name('user.terms');
+
 
     });
 
