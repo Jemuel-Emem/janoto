@@ -15,6 +15,7 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public bool $passwordVisible = false;
 
     /**
      * Handle an incoming registration request.
@@ -34,6 +35,13 @@ new #[Layout('layouts.guest')] class extends Component
         Auth::login($user);
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
+
+
+    }
+
+    public function togglePasswordVisibility()
+    {
+        $this->passwordVisible = !$this->passwordVisible;
     }
 }; ?>
 
@@ -54,26 +62,39 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                            :type="$passwordVisible ? 'text' : 'password'"
+                            name="password" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+            <!-- Toggle Password Visibility Icon -->
+            <span wire:click="togglePasswordVisibility" class="absolute right-3 top-8 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm-1-7h2v2h-2z" />
+                </svg>
+            </span>
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
+                            :type="$passwordVisible ? 'text' : 'password'"
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+
+            <!-- Toggle Confirm Password Visibility Icon -->
+            <span wire:click="togglePasswordVisibility" class="absolute right-3 top-8 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm-1-7h2v2h-2z" />
+                </svg>
+            </span>
         </div>
 
         <div class="flex items-center justify-end mt-4">
@@ -87,3 +108,4 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
     </form>
 </div>
+
