@@ -91,10 +91,25 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="mb-4" class="">
+                    <div>
+                        <x-checkbox
+                        wire:model="termsAccepted"
+                        label="Did you agree to the terms and conditions?"
+                    />
+                    </div>
+                    {{-- <div>
+                        <a href="{{ route('user.terms') }}" class="text-green-500">View Terms and condition</a>
+                    </div> --}}
+                </div>
+
                 <div class="text-center">
                     <x-button wire:click="submitAppointment"
                         label="Submit Appointment"
                         class="bg-green-600 text-white hover:bg-green-700 rounded-md shadow-md transition duration-300 px-6 py-3"
+
                     />
                 </div>
             </div>

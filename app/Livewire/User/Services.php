@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Livewire\User;
-use App\Models\appointment;
+
+use App\Models\Appointment;
 use Livewire\Component;
 use App\Models\Service;
 use Livewire\WithPagination;
@@ -9,11 +10,13 @@ use Livewire\WithPagination;
 class Services extends Component
 {
     use WithPagination;
+
     public $appointmentDate = '';
     public $appointmentTime = '';
     public $search = '';
     public $selectedService = null;
     public $showModal = false;
+    public $termsAccepted = false; // Property to track if terms are accepted
 
     public function render()
     {
@@ -32,13 +35,14 @@ class Services extends Component
 
     public function submitAppointment()
     {
-
+        // Validate appointment date and time
         $this->validate([
             'appointmentDate' => 'required|date|after_or_equal:today',
             'appointmentTime' => 'required|date_format:H:i',
+            'termsAccepted' => 'accepted', // Ensure terms are accepted
         ]);
 
-
+        // Create the appointment
         Appointment::create([
             'user_id' => auth()->id(),
             'service_id' => $this->selectedService->id,
@@ -50,14 +54,16 @@ class Services extends Component
         session()->flash('success', 'Your appointment has been successfully submitted.');
         $this->closeModal();
     }
+
     public function closeModal()
     {
         $this->showModal = false;
         $this->selectedService = null;
+        $this->termsAccepted = false;
     }
 
-    public function searchServices(){
+    public function searchServices()
+    {
 
     }
 }
-
