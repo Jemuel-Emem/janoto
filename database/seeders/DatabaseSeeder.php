@@ -18,14 +18,16 @@ class DatabaseSeeder extends Seeder
              'name' => 'Test Admin',
              'email' => 'admin@gmail.com', //
              'password' => 'password',
-             'is_admin' =>'1'
+             'is_admin' =>'1',
+             'email_verified_at' => now(),
          ]);
 
          \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@gmail.com', //
             'password' => 'password',
-            'is_admin' =>'0'
+            'is_admin' =>'0',
+            'email_verified_at' => now(),
         ]);
     }
 }

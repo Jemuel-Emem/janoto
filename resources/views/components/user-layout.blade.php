@@ -175,7 +175,8 @@
     @wireUiScripts
 </head>
 
-<body class="font-sans antialiased h-screen">
+<body class="font-sans antialiased h-screen bg-gradient-to-r from-green-500 to-white">
+
     @livewireScripts
     <div class="header w-full mx-auto">
         <div class="relative flex flex-col items-center p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
@@ -206,7 +207,7 @@
                     <button
                         class="text-grayishyellow bg-darkgreen px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkgreen"
                         onclick="toggleDropdown()">
-                        Options
+                        Settings
                     </button>
                     <div
                         id="dropdownMenu"
@@ -246,6 +247,7 @@
             <main>
                 {{ $slot }}
             </main>
+
 
 
         </div>

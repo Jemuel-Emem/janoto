@@ -3,17 +3,56 @@ namespace App\Livewire\Admin;
 
 use App\Models\Appointment as ap;
 use Livewire\Component;
+use Carbon\Carbon;
 
 class Appointment extends Component
 {
+    public $appointments;
+    public $start_date;
+    public $end_date;
+    public $add_note_modal = false;
+    public $note;
+    public $selectedAppointmentId;
+
+    public function mount()
+    {
+
+        $this->appointments = ap::with('user', 'service')->get() ?: collect();
+    }
 
     public function render()
     {
-        $appointments = ap::with('user', 'service')->get();
-
-        return view('livewire.admin.appointment', compact('appointments'));
+        return view('livewire.admin.appointment');
     }
 
+
+    public function updatedStartDate()
+    {
+        $this->filterAppointments();
+    }
+
+    public function updatedEndDate()
+    {
+        $this->filterAppointments();
+    }
+
+    public function filterAppointments()
+    {
+        $appointmentsQuery = ap::with('user', 'service');
+
+
+        if ($this->start_date) {
+            $appointmentsQuery->whereDate('appointment_date', '>=', Carbon::parse($this->start_date));
+        }
+
+
+        if ($this->end_date) {
+            $appointmentsQuery->whereDate('appointment_date', '<=', Carbon::parse($this->end_date));
+        }
+
+
+        $this->appointments = $appointmentsQuery->get();
+    }
 
     public function confirmAppointment($id)
     {
@@ -24,14 +63,32 @@ class Appointment extends Component
         session()->flash('message', 'Appointment confirmed!');
     }
 
-
     public function cancelAppointment($id)
     {
-        $appointment = ap::find($id);
-        $appointment->status = 'canceled';
-        $appointment->save();
+        $this->selectedAppointmentId = $id;
+        $this->add_note_modal = true;
+    }
 
-        session()->flash('message', 'Appointment canceled!');
+    public function submitNote()
+    {
+        $appointment = ap::find($this->selectedAppointmentId);
+
+        if ($appointment) {
+            $appointment->status = 'cancelled';
+            $appointment->note = $this->note;
+            $appointment->save();
+        }
+
+        $this->closeModal();
+        session()->flash('message', 'Appointment canceled with note!');
+
+
+        $this->appointments = ap::with('user', 'service')->get();
+    }
+
+    public function closeModal()
+    {
+        $this->add_note_modal = false;
+        $this->note = '';
     }
 }
-

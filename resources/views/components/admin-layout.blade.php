@@ -135,7 +135,9 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                 {{ $slot }}
             </main>
         </div>
+
     </div>
+    @livewireScripts
 </body>
 
 </html>

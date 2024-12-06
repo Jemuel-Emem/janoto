@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
-Route::middleware([
-
-    ])->group(function () {
-         Route::get('/dashboard', function () {
-           if (auth()->user()->is_admin == 1) {
+Auth::routes(['verify' => true]);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        if (Auth::user()->is_admin == 1) {
             return redirect()->route('Admindashboard');
-           }else{
+        } else {
             return redirect()->route('user-dashboard');
-           }
-         })->name('userdashboard');
-
-    });
+        }
+    })->name('dashboard');
+});
 
     Route::prefix('admin')->middleware('admin')->group(function(){
         Route::get('/Admindashboard', function(){

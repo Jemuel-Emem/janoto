@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
             $table->date('appointment_date');
             $table->time('appointment_time');
+            $table->text('note')->nullable();
             $table->enum('status', ['pending', 'confirmed', 'completed', 'cancelled'])->default('pending');
             $table->timestamps();
         });

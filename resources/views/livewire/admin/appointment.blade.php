@@ -1,15 +1,31 @@
 <div class="container mx-auto mt-8 px-4">
-
-
-
-
+    <!-- Date Filter Section -->
+    <div class="mb-4 flex items-center space-x-4">
+        <x-input
+            type="date"
+            label="Start Date"
+            wire:model="start_date"
+            class="w-40"
+        />
+        <x-input
+            type="date"
+            label="End Date"
+            wire:model="end_date"
+            class="w-40"
+        />
+        <x-button
+            label="Filter"
+            wire:click="filterAppointments"
+            class="bg-blue-500 text-white hover:bg-blue-600 mt-6 w-32"
+        />
+    </div>
 
     <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
         <table class="min-w-full table-auto">
             <thead class="text-white bg-gray-600">
                 <tr>
-                    <th class="px-4 py-2 text-left">User Name</th>
-                    <th class="px-4 py-2 text-left">Service Name</th>
+                    <th class="px-4 py-2 text-left">Name</th>
+                    <th class="px-4 py-2 text-left">Service</th>
                     <th class="px-4 py-2 text-left">Appointment Date</th>
                     <th class="px-4 py-2 text-left">Appointment Time</th>
                     <th class="px-4 py-2 text-left">Status</th>
@@ -28,7 +44,6 @@
                                 {{ ucfirst($appointment->status) }}
                             </span>
                         </td>
-
                         <td class="px-4 py-2">
                             @if($appointment->status == 'pending')
                                 <x-button
@@ -51,4 +66,18 @@
         </table>
     </div>
 
+    <x-modal wire:model.defer="add_note_modal">
+        <x-card title="Add Cancellation Note">
+            <div class="space-y-3">
+                <x-input label="Add Note" placeholder="Enter cancellation note" wire:model="note" />
+            </div>
+
+            <x-slot name="footer">
+                <div class="flex justify-end gap-x-4">
+                    <x-button flat label="Cancel" wire:click="closeModal" negative />
+                    <x-button positive label="Submit" wire:click="submitNote" />
+                </div>
+            </x-slot>
+        </x-card>
+    </x-modal>
 </div>
