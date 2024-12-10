@@ -2,7 +2,7 @@
     <h1 class="text-3xl font-bold text-blue-600 text-center">Schedule of Confirmed Appointments</h1>
     <p class="text-lg text-gray-500 text-center mb-6">View all confirmed appointments on the calendar</p>
 
-    <!-- Calendar Container -->
+
     <div id="calendar" class="bg-gray-100 rounded-lg shadow-lg p-6"></div>
 </div>
 

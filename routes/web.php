@@ -48,6 +48,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             return view('admin.faq');
         })->name('admin.faq');
 
+        Route::get('/admin.patient-history', function(){
+            return view('admin.patient-history');
+        })->name('admin.patient-history');
+
 
      });
 

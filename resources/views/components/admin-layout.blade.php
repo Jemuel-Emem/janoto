@@ -1,3 +1,9 @@
+
+    <?php
+    use App\Models\Appointment;
+    use Carbon\Carbon;
+    $todayAppointmentsCount = Appointment::whereDate('appointment_date', Carbon::today())->count();
+    ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -97,6 +103,10 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-contract-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Appointments</span>
+                        <span
+                            class="ml-2 px-2 py-1 text-xs font-bold text-white bg-red-600 rounded-full">
+                            {{ $todayAppointmentsCount }}
+                        </span>
                     </a>
                 </li>
                 <li>
@@ -111,6 +121,14 @@ font-family: 'Pacifico', cursive; /* Custom script-style font */
                         class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
                         <i class="ri-information-fill"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">FAQ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.patient-history') }}"
+                        class="flex items-center p-2 text-white hover:text-teal-800 rounded-lg hover:bg-teal-100 group">
+                        <i class="ri-history-fill"></i>
+                        <span class="flex-1 ms-3 whitespace-nowrap">History</span>
                     </a>
                 </li>
             </ul>
